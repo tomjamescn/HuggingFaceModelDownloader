@@ -68,11 +68,13 @@ func main() {
 				fmt.Println("Model:", modelName)
 				IsDataset = false //no need to speicfy it here, just cleaner
 				ModelOrDataSet = modelName
+				storage = storage + "/model"
 			}
 			if datasetName != "" {
 				fmt.Println("Dataset:", datasetName)
 				IsDataset = true
 				ModelOrDataSet = datasetName
+				storage = storage + "/dataset"
 			}
 
 			_ = godotenv.Load() //this will give an error of the file is not there, but we dont really care
@@ -105,7 +107,7 @@ func main() {
 
 	rootCmd.Flags().StringVarP(&branch, "branch", "b", "main", "ModModel/Datasetel branch (optional)")
 
-	rootCmd.Flags().StringVarP(&storage, "storage", "s", "Storage", "Storage path (optional)")
+	rootCmd.Flags().StringVarP(&storage, "storage", "s", "/data1/huggingface", "Storage path (optional)")
 
 	rootCmd.Flags().BoolVarP(&SkipSHA, "skipSHA", "k", false, "Skip SHA256 Hash Check, sometimes you just need to download missing files without wasting time waiting (optional)")
 

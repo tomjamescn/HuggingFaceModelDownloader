@@ -74,7 +74,8 @@ func DownloadModel(ModelDatasetName string, AppendFilterToPath bool, SkipSHA boo
 		modelP = strings.Split(ModelDatasetName, ":")[0]
 		HasFilter = true
 	}
-	modelPath := path.Join(DestintionBasePath, strings.Replace(modelP, "/", "_", -1))
+	//modelPath := path.Join(DestintionBasePath, strings.Replace(modelP, "/", "_", -1))
+	modelPath := path.Join(DestintionBasePath, modelP)
 	if token != "" {
 		RequiresAuth = true
 		AuthToken = token
